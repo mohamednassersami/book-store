@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
-// import BookStoreContext from "../../context/bookStorContext";
+import { useState } from "react";
 import Modal from "../modal/Modal";
 import "./book-slider.css";
 import Rating from "./Rating";
+import { useCart } from "../../context/cartContext";
 
 const BookSlider = ({ data }) => {
-  // const { addToCart } = useContext(BookStoreContext);
+  const { addToCart } = useCart();
   const [slideIndex, setSlideIndex] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [bookData, setBookData] = useState(null);
@@ -53,7 +53,7 @@ const BookSlider = ({ data }) => {
                 className="bi bi-eye-fill"
               ></i>
               <i
-                // onClick={() => addToCart(item, 1)}
+                onClick={() => addToCart({ ...item, quantity: 1 })}
                 className="bi bi-cart-plus"
               ></i>
             </div>
